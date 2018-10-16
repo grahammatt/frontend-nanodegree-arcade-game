@@ -1,0 +1,29 @@
+{
+  "name": "frontend-nanodegree-arcade-game",
+  "version": "1.0.0",
+  "description": "Frogger clone made for Udacity Grow with Google challenge scholarship",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grahammatt/frontend-nanodegree-arcade-game.git"
+  },
+  "keywords": [
+    "Frogger",
+    "Game"
+  ],
+  "author": "Matt Graham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grahammatt/frontend-nanodegree-arcade-game/issues"
+  },
+  "homepage": "https://github.com/grahammatt/frontend-nanodegree-arcade-game#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "install": "^0.12.1",
+    "npm": "^6.4.1"
+  }
+}
