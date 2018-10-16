@@ -1,74 +1,70 @@
 /*jshint esversion: 6*/
 
 // Enemies our player must avoid
-// TODO: convert to es6 class
-var Enemy = function(x, y, speed) {
-  // Variables applied to each of our instances go here,
-  // we've provided one for you to get started
-  this.x = x;
-  this.y = y;
-  this.speed = speed;
-  // The image/sprite for our enemies, this uses
-  // a helper we've provided to easily load images
-  this.sprite = 'images/enemy-bug.png';
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-  // You should multiply any movement by the dt parameter
-  // which will ensure the game runs at the same speed for
-  // all computers.
-  this.x = (this.x < 505 ? this.x + (this.speed * dt) : -101);
-};
-
-Enemy.prototype.checkCollisions = function() {
-
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+class Enemy {
+  constructor(x, y, speed = 40) {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/enemy-bug.png';
+  }
+  // Update the enemy's position, required method for game
+  // Parameter: dt, a time delta between ticks
+  update(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    this.x = (this.x < 505 ? this.x + (this.speed * dt) : -101);
+  }
+  checkCollisions() {}
+  // Draw the enemy on the screen, required method for game
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
-// TODO: convert to es6 class
-var Player = function(x, y) {
-  this.x = x;
-  this.y = y;
-  this.sprite = 'images/char-boy.png';
-};
-
-Player.prototype.update = function(x = 0, y = 0) {
-  if (x != 0 || y != 0) {
-    this.x += x;
-    this.y += y;
+class Player {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
   }
-};
 
-Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Player.prototype.handleInput = function(keyPress) {
-  switch (keyPress) {
-    case `up`:
-      this.update(0, -83);
-      break;
-    case `down`:
-      this.update(0, 83);
-      break;
-    case `left`:
-      this.update(-101);
-      break;
-    case `right`:
-      this.update(101);
-      break;
+  update(x = 0, y = 0) {
+    if (x != 0 || y != 0) {
+      this.x += x;
+      this.y += y;
+    }
   }
-};
+
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+  handleInput(keyPress) {
+    switch (keyPress) {
+      case `up`:
+        this.update(0, -83);
+        break;
+      case `down`:
+        this.update(0, 83);
+        break;
+      case `left`:
+        this.update(-101);
+        break;
+      case `right`:
+        this.update(101);
+        break;
+    }
+  }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
