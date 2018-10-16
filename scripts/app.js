@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 
 // Enemies our player must avoid
+// TODO: convert to es6 class
 var Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -33,23 +34,40 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+
+// TODO: convert to es6 class
 var Player = function(x, y) {
   this.x = x;
   this.y = y;
   this.sprite = 'images/char-boy.png';
 };
-Player.prototype.update = function(dt) {
-  // You should multiply any movement by the dt parameter
-  // which will ensure the game runs at the same speed for
-  // all computers.
+
+Player.prototype.update = function(x = 0, y = 0) {
+  if (x != 0 || y != 0) {
+    this.x += x;
+    this.y += y;
+  }
 };
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-
+Player.prototype.handleInput = function(keyPress) {
+  switch (keyPress) {
+    case `up`:
+      this.update(0, -83);
+      break;
+    case `down`:
+      this.update(0, 83);
+      break;
+    case `left`:
+      this.update(-101);
+      break;
+    case `right`:
+      this.update(101);
+      break;
+  }
 };
 
 // Now instantiate your objects.
@@ -65,13 +83,13 @@ allEnemies.push(...[
   new Enemy(-234, 215, 40)
 ]);
 // Place the player object in a variable called player
-var player = new Player(202, 400);
+let player = new Player(202, 400);
 // TODO: fix player positioning
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-  var allowedKeys = {
+  let allowedKeys = {
     37: 'left',
     38: 'up',
     39: 'right',
