@@ -38,9 +38,10 @@ class Player {
   }
 
   update(x = 0, y = 0) {
-    if (x != 0 || y != 0) {
-      this.x += x;
+    if ((y < 0 && this.y !== -41.5) || (y > 0 && this.y !== 373.5)) {
       this.y += y;
+    } else if ((x < 0 && this.x !== 0) || (x > 0 && this.x !== 404)) {
+      this.x += x;
     }
   }
 
@@ -79,11 +80,11 @@ allEnemies.push(...[
   new Enemy(-234, 215, 40)
 ]);
 // Place the player object in a variable called player
-let player = new Player(202, 400);
-// TODO: fix player positioning
+let player = new Player(202, 373.5);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+// TODO: disable scroll input
 document.addEventListener('keyup', function(e) {
   let allowedKeys = {
     37: 'left',
