@@ -19,8 +19,18 @@ class Enemy {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = (this.x < 505 ? this.x + (this.speed * dt) : -101);
+    this.checkCollisions();
   }
-  checkCollisions() {}
+
+  checkCollisions() {
+    // TODO: define sprite widths and heights in constructor
+    if (this.x < player.x + 78 /*player.width*/ &&
+      this.x + 78 /*this.width*/ > player.x &&
+      this.y < player.y + 30 /*player.width*/ &&
+      this.y + 30 /*this.width*/ > player.y) {
+      player.reset();
+    }
+  }
   // Draw the enemy on the screen, required method for game
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
