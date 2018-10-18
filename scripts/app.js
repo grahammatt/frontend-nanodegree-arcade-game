@@ -70,14 +70,14 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
-/// TODO: Fix enemy positioning
 allEnemies.push(...[
-  new Enemy(-353, 55, 50),
-  new Enemy(0, 55, 50),
-  new Enemy(0, 135, 20),
-  new Enemy(0, 215, 40),
-  new Enemy(-117, 215, 40),
-  new Enemy(-234, 215, 40)
+  new Enemy(-303, 45, 60),
+  new Enemy(0, 45, 60),
+  new Enemy(0, 128, 80),
+  new Enemy(303, 128, 80),
+  new Enemy(0, 211, 50),
+  new Enemy(-117, 211, 50),
+  new Enemy(-234, 211, 50)
 ]);
 // Place the player object in a variable called player
 let player = new Player(202, 373.5);
