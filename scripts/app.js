@@ -34,14 +34,23 @@ class Player {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+    this.initX = x;
+    this.initY = y;
     this.sprite = 'images/char-boy.png';
   }
-
+  reset() {
+    this.x = this.initX;
+    this.y = this.initY;
+  }
   update(x = 0, y = 0) {
-    if ((y < 0 && this.y !== -41.5) || (y > 0 && this.y !== 373.5)) {
-      this.y += y;
-    } else if ((x < 0 && this.x !== 0) || (x > 0 && this.x !== 404)) {
+    if ((x < 0 && this.x !== 0) || (x > 0 && this.x !== 404)) {
       this.x += x;
+      return;
+    } else if ((y < 0 && this.y !== -41.5) || (y > 0 && this.y !== 373.5)) {
+      this.y += y;
+      if (this.y === -41.5) {
+        this.reset();
+      }
     }
   }
 
