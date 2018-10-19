@@ -1,5 +1,7 @@
 /*jshint esversion: 6*/
 
+const MODAL = document.getElementById('win-modal');
+
 // Enemies our player must avoid
 class Enemy {
   constructor(x, y, speed = 40) {
@@ -24,6 +26,7 @@ class Enemy {
 
   checkCollisions() {
     // TODO: define sprite widths and heights in constructor
+    // TODO: improve collision detection
     if (this.x < player.x + 78 /*player.width*/ &&
       this.x + 78 /*this.width*/ > player.x &&
       this.y < player.y + 30 /*player.width*/ &&
@@ -59,8 +62,7 @@ class Player {
     } else if ((y < 0 && this.y !== -41.5) || (y > 0 && this.y !== 373.5)) {
       this.y += y;
       if (this.y === -41.5) {
-        // TODO: show modal on win condition
-        this.reset();
+        MODAL.style.display = 'flex'; //display win modal
       }
     }
   }
@@ -114,4 +116,9 @@ document.addEventListener('keyup', function(e) {
     40: 'down'
   };
   player.handleInput(allowedKeys[e.keyCode]);
+});
+
+document.getElementById('reset-game').addEventListener('click', function() {
+  player.reset();
+  MODAL.style.display = 'none';
 });
