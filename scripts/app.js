@@ -59,6 +59,7 @@ class Player {
     } else if ((y < 0 && this.y !== -41.5) || (y > 0 && this.y !== 373.5)) {
       this.y += y;
       if (this.y === -41.5) {
+        // TODO: show modal on win condition
         this.reset();
       }
     }
@@ -89,6 +90,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
+// TODO: randomize amount of enemies for each row and randomize speed
 allEnemies.push(...[
   new Enemy(-303, 45, 60),
   new Enemy(0, 45, 60),
