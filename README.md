@@ -1,18 +1,19 @@
-frontend-nanodegree-arcade-game
-===============================
-
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
 # Frogger Clone
 
-# About
+## About
+Frogger clone built on a forked game engine and assets. Made during my participation in the Udacity Grow with Google scholarship.
+
+This game should run in any modern html5 supporting browser and be controlled with a keyboard.
+
+## How to Play
+The goal of the game is for the player character to reach the water without colliding with any enemies.
+The player is able to move up, down, left, and right with the corresponding arrow keys on the keyboard.
+If a player attempts to move into an enemy or if an enemy runs into the player then the player will reset to their initial position. The game randomizes the speed and amount of enemies on each playthrough.
+
+When the player reaches the water and wins a modal will pop up with a button allowing the user to reset the game.
 
 ## Built with
 - [Normalize](https://necolas.github.io/normalize.css/)
-- [Font Awesome](https://fontawesome.com/)
-- [Animate.css](https://daneden.github.io/animate.css/)
-- [easytimer.js](https://albert-gonzalez.github.io/easytimer.js/)
 
 #### Thanks
 https://css-tricks.com/ is a great resource for help with responsive design
