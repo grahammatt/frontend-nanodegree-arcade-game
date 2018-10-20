@@ -89,7 +89,6 @@ class Player {
       this.y += y;
       if (this.y === -41.5) {
         //Game has been won. Display win modal.
-        // TODO: temporarily remove event listener
         MODAL.style.display = 'flex';
       }
     }
@@ -103,19 +102,21 @@ class Player {
    * @param  {String} keyPress The string representation of the key pressed by the user
    */
   handleInput(keyPress) {
-    switch (keyPress) {
-      case `up`:
-        this.update(0, -83);
-        break;
-      case `down`:
-        this.update(0, 83);
-        break;
-      case `left`:
-        this.update(-101);
-        break;
-      case `right`:
-        this.update(101);
-        break;
+    if (this.y !== -41.5) {
+      switch (keyPress) {
+        case `up`:
+          this.update(0, -83);
+          break;
+        case `down`:
+          this.update(0, 83);
+          break;
+        case `left`:
+          this.update(-101);
+          break;
+        case `right`:
+          this.update(101);
+          break;
+      }
     }
   }
 }
@@ -156,7 +157,6 @@ let player = new Player(202, 373.5);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 // TODO: disable scroll input
-// TODO: move event listener creation to player object
 document.addEventListener('keyup', function(e) {
   let allowedKeys = {
     37: 'left',
