@@ -29,7 +29,6 @@ $hover-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /**
 }
 
 body {
-  //media querys for landscape mobile phones set to work up to the size of a pixel xl 2
   background    : $background;
   font-family   : $font-main;
   color         : $font-color-dark;
@@ -43,7 +42,6 @@ canvas {
   margin : auto;
   display: block;
 }
-// TODO: add modal for win condition
 
 .win-modal {
   @include shadow(5);
