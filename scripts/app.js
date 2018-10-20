@@ -20,7 +20,12 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x < 505 ? this.x + (this.speed * dt) : -101);
+    if (this.x < 505) {
+      this.x += (this.speed * dt);
+    } else {
+      this.x = -101;
+      this.speed = getRandomInt(50, 150);
+    }
     this.checkCollisions();
   }
 
@@ -89,22 +94,29 @@ class Player {
   }
 }
 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function resetEnemies() {
+  allEnemies = [];
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < getRandomInt(1, 4); j++) {
+      allEnemies.push(new Enemy(0 - (202 * j), 45 + (83 * i), getRandomInt(50, 150)));
+    }
+  }
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [];
-// TODO: randomize amount of enemies for each row and randomize speed
-allEnemies.push(...[
-  new Enemy(-303, 45, 60),
-  new Enemy(0, 45, 60),
-  new Enemy(0, 128, 80),
-  new Enemy(303, 128, 80),
-  new Enemy(0, 211, 50),
-  new Enemy(-117, 211, 50),
-  new Enemy(-234, 211, 50)
-]);
+let allEnemiess;
+resetEnemies();
+
 // Place the player object in a variable called player
 let player = new Player(202, 373.5);
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 // TODO: disable scroll input
@@ -120,5 +132,6 @@ document.addEventListener('keyup', function(e) {
 
 document.getElementById('reset-game').addEventListener('click', function() {
   player.reset();
+  resetEnemies();
   MODAL.style.display = 'none';
 });
